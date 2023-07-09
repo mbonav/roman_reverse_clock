@@ -1,25 +1,11 @@
 import numpy as np
 
+
 # Task 1: Convert Roman numeral to integer
 def roman_to_integer(roman_numeral):
-    roman_values = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000
-    }
+    roman_values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 
-    subtractive_groups = {
-        'IV': 4,
-        'IX': 9,
-        'XL': 40,
-        'XC': 90,
-        'CD': 400,
-        'CM': 900
-    }
+    subtractive_groups = {"IV": 4, "IX": 9, "XL": 40, "XC": 90, "CD": 400, "CM": 900}
 
     # Convert the Roman numeral to uppercase for consistent handling
     roman_numeral = roman_numeral.upper()
@@ -29,8 +15,11 @@ def roman_to_integer(roman_numeral):
         i = 0
         while i < len(roman_numeral):
             # Check for subtractive group
-            if i < len(roman_numeral) - 1 and roman_numeral[i:i+2] in subtractive_groups:
-                subtractive_value = subtractive_groups[roman_numeral[i:i+2]]
+            if (
+                i < len(roman_numeral) - 1
+                and roman_numeral[i : i + 2] in subtractive_groups
+            ):
+                subtractive_value = subtractive_groups[roman_numeral[i : i + 2]]
                 result += subtractive_value
                 i += 2  # Skip the subtractive group
             else:
@@ -55,26 +44,26 @@ def roman_to_integer(roman_numeral):
         return None, str(e)
 
 
-
 # Task 2: Reverse words in a string
 def reverse_words(string):
-    # Split the string into an array of words 
+    # Split the string into an array of words
     words = np.array(string.split())
 
     # Reverse each word using array slicing
     reversed_words = np.array([word[::-1] for word in words])
 
     # Join the reversed words back into a string
-    reversed_string = ' '.join(reversed_words)
+    reversed_string = " ".join(reversed_words)
 
     return reversed_string
 
 
 # Task 3: Calculate the angle between clock hands
 
+
 def angle_between_hands(hours, minutes):
     if hours < 0 or hours > 23 or minutes < 0 or minutes > 59:
-        result=None
+        result = None
         return result, "Invalid time: Time values are out of range"
 
     try:
@@ -84,9 +73,8 @@ def angle_between_hands(hours, minutes):
         angle = np.abs(hour_angle - minute_angle)
         angle = np.min([angle, 360 - angle])
 
-        result=angle.item()
+        result = angle.item()
 
         return result
     except ValueError as e:
         return result, str(e)
-
