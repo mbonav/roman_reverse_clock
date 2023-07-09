@@ -38,11 +38,16 @@ def test_reverse_words(string, expected_result):
 
 # Test cases for angle_between_hands function
 @pytest.mark.parametrize('hours, minutes, expected_angle', [
-    (12, 0, 0),
+   (12, 0, 0),
+    (24, 0, 0),
     (3, 0, 90),
+    (15, 0, 90),
     (6, 30, 15),
+    (18, 30, 15),
     (9, 45, 22.5),
+    (21, 45, 22.5),
     (11, 59, 5.5),
+    (23, 59, 5.5),
 ])
 def test_angle_between_hands(hours, minutes, expected_angle):
     assert angle_between_hands(hours, minutes) == pytest.approx(expected_angle, abs=0.01)
