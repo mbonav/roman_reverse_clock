@@ -13,6 +13,7 @@ def roman_to_integer(roman_numeral):
     # to retrieve the corresponding decimal value from the dictionary
     for char in roman_numeral[::-1]:
         value = roman_values[char]
+        # Compares the current value with the previous value
         if value < prev_value:
             result -= value
         else:
