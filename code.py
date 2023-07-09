@@ -1,55 +1,53 @@
-import re
-
+import numpy as np
 
 # Task 1: Convert Roman numeral to integer
 def roman_to_integer(roman_numeral):
-    #initialising the dictionary
-    roman_values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    roman_values = {
+        'I': 1,
+        'V': 5,
+        'X': 10,
+        'L': 50,
+        'C': 100,
+        'D': 500,
+        'M': 1000
+    }
 
-    result = 0
-    prev_value = 0
-    
-    # loop trough the caracters in reverse order 
-    # to retrieve the corresponding decimal value from the dictionary
-    for char in roman_numeral[::-1]:
-        value = roman_values[char]
-        # Compares the current value with the previous value
-        if value < prev_value:
-            result -= value
-        else:
-            result += value
-            prev_value = value
+    # Convert Roman numeral characters to decimal values using NumPy array comprehension
+    values = np.array([roman_values[char] for char in roman_numeral])
+
+    # Calculate the result by summing the decimal values while accounting for subtractive notation
+    result = np.sum(np.where(values[:-1] < values[1:], -values[:-1], values[:-1])) + values[-1]
 
     return result
 
 # Task 2: Reverse words in a string
 def reverse_words(string):
-    # Split the string into words using regular expression
-    words = re.findall(r"\w+", string)
+    # Split the string into an array of words using NumPy's split function
+    words = np.array(string.split())
 
-    # Reverse each word
-    reversed_words = [word[::-1] for word in words]
+    # Reverse each word using array slicing
+    reversed_words = np.array([word[::-1] for word in words])
 
-    # Reconstruct the string with reversed words
-    result = re.sub(r"\w+", lambda m: reversed_words.pop(0), string)
+    # Join the reversed words back into a string
+    reversed_string = ' '.join(reversed_words)
 
-    return result
+    return reversed_string
 
 
 # Task 3: Calculate the angle between clock hands
 def angle_between_hands(hours, minutes):
-    # accounting for the 24-hour format
+    # Calculate the hour angle and minute angle using basic arithmetic operations with NumPy arrays
+
     if hours >= 12:
         hours -= 12
         
-    # Calculate the angles for the hour and minute hands
-    hour_angle = 0.5 * (60 * (hours % 12) + minutes)
+    hour_angle = 0.5 * (60 * hours + minutes)
     minute_angle = 6 * minutes
 
-    # Calculate the absolute difference between the angles
-    angle = abs(hour_angle - minute_angle)
+    # Compute the absolute difference between the angles using np.abs
+    angle = np.abs(hour_angle - minute_angle)
 
-    # Take the smaller angle between the two possible angles
-    angle = min(angle, 360 - angle)
+    # Determine the minimum angle by comparing the angle with its complement (360 - angle)
+    angle = np.minimum(angle, 360 - angle)
 
-    return angle
+    return angle 

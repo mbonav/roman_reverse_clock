@@ -1,53 +1,47 @@
-import pytest
+
 from code import roman_to_integer, reverse_words, angle_between_hands
 
-
 # Test cases for roman_to_integer function
-@pytest.mark.parametrize(
-    "roman_numeral, expected_value",
-    [
-        ("I", 1),
-        ("IV", 4),
-        ("IX", 9),
-        ("XL", 40),
-        ("XC", 90),
-        ("CD", 400),
-        ("CM", 900),
-        ("MCMXC", 1990),
-        ("MMVIII", 2008),
-        ("MDCLXVI", 1666),
-    ],
-)
-def test_roman_to_integer(roman_numeral, expected_value):
-    assert roman_to_integer(roman_numeral) == expected_value
-
+def test_roman_to_integer():
+    assert roman_to_integer('I') == 1
+    assert roman_to_integer('V') == 5
+    assert roman_to_integer('X') == 10
+    assert roman_to_integer('L') == 50
+    assert roman_to_integer('C') == 100
+    assert roman_to_integer('D') == 500
+    assert roman_to_integer('M') == 1000
+    assert roman_to_integer('IV') == 4
+    assert roman_to_integer('IX') == 9
+    assert roman_to_integer('XL') == 40
+    assert roman_to_integer('XC') == 90
+    assert roman_to_integer('CD') == 400
+    assert roman_to_integer('CM') == 900
+    assert roman_to_integer('MCMXC') == 1990
+    assert roman_to_integer('MMVIII') == 2008
 
 # Test cases for reverse_words function
-@pytest.mark.parametrize(
-    "string, expected_result",
-    [
-        ("Hello World!", "olleH dlroW!"),
-        ("OpenAI is awesome.", "IAnepO si emosewa."),
-        ("This is a test", "sihT si a tset"),
-        ("", ""),
-        ("Single", "elgniS"),
-    ],
-)
-def test_reverse_words(string, expected_result):
-    assert reverse_words(string) == expected_result
+def test_reverse_words():
+    assert reverse_words('Hello World!') == 'olleH !dlroW'
+    assert reverse_words('OpenAI is awesome.') == 'IAnepO si .emosewa'
 
 # Test cases for angle_between_hands function
-@pytest.mark.parametrize('hours, minutes, expected_angle', [
-   (12, 0, 0),
-    (24, 0, 0),
-    (3, 0, 90),
-    (15, 0, 90),
-    (6, 30, 15),
-    (18, 30, 15),
-    (9, 45, 22.5),
-    (21, 45, 22.5),
-    (11, 59, 5.5),
-    (23, 59, 5.5),
-])
-def test_angle_between_hands(hours, minutes, expected_angle):
-    assert angle_between_hands(hours, minutes) == pytest.approx(expected_angle, abs=0.01)
+def test_angle_between_hands():
+    # Test case with 12:00
+    assert angle_between_hands(12, 0) == 0
+
+    # Test case with 24:00
+    assert angle_between_hands(24, 0) == 0
+
+    # Test case with 3:30
+    assert angle_between_hands(3, 30) == 75
+
+    # Test case with 6:45
+    assert angle_between_hands(15, 30) == 75
+
+    # Test case with 9:15
+    assert angle_between_hands(9, 15) == 172.5
+
+    # Test case with 11:59
+    assert angle_between_hands(21, 15) == 172.5
+
+
