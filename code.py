@@ -12,7 +12,7 @@ def roman_to_integer(roman_numeral):
         'M': 1000
     }
 
-    # Convert Roman numeral characters to decimal values using NumPy array comprehension
+    # Convert Roman numeral characters to decimal values 
     values = np.array([roman_values[char] for char in roman_numeral])
 
     # Calculate the result by summing the decimal values while accounting for subtractive notation
@@ -22,7 +22,7 @@ def roman_to_integer(roman_numeral):
 
 # Task 2: Reverse words in a string
 def reverse_words(string):
-    # Split the string into an array of words using NumPy's split function
+    # Split the string into an array of words 
     words = np.array(string.split())
 
     # Reverse each word using array slicing
@@ -36,7 +36,7 @@ def reverse_words(string):
 
 # Task 3: Calculate the angle between clock hands
 def angle_between_hands(hours, minutes):
-    # Calculate the hour angle and minute angle using basic arithmetic operations with NumPy arrays
+    # Calculate the hour angle and minute angle 
 
     if hours >= 12:
         hours -= 12
@@ -44,7 +44,7 @@ def angle_between_hands(hours, minutes):
     hour_angle = 0.5 * (60 * hours + minutes)
     minute_angle = 6 * minutes
 
-    # Compute the absolute difference between the angles using np.abs
+    # Compute the absolute difference between the angles 
     angle = np.abs(hour_angle - minute_angle)
 
     # Determine the minimum angle by comparing the angle with its complement (360 - angle)
