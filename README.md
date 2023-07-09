@@ -1,8 +1,6 @@
 [![Python 3.8](https://github.com/mbonav/roman_reverse_clock/actions/workflows/main.yml/badge.svg)](https://github.com/mbonav/roman_reverse_clock/actions/workflows/main.yml)
 
-
 # This is an example code that includes three functions that performs the following tasks: 
-
 
 1.	Take a Roman numeral as its input and returns its value as an integer.
   
