@@ -35,6 +35,10 @@ def reverse_words(string):
 
 # Task 3: Calculate the angle between clock hands
 def angle_between_hands(hours, minutes):
+    # accounting for the 24-hour format
+    if hours >= 12:
+        hours -= 12
+        
     # Calculate the angles for the hour and minute hands
     hour_angle = 0.5 * (60 * (hours % 12) + minutes)
     minute_angle = 6 * minutes
