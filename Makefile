@@ -2,14 +2,18 @@ install:
 	pip install --upgrade pip &&\
 		pip install -r requirements.txt
 
-format: 
+#install-azure:
+#	pip install --upgrade pip &&\
+#		pip install -r requirements-azure.txt
+
+format:
 	black *.py
 
-test:
-	python -m pytest -vv --cov=hello hello.py
-	#python -m pytest --nbval notebook.ipynb
-
 lint:
-	pylint --disable=R,C hello.py
+	pylint --disable=R,C code.py
+	pylint --disable=R,C test_code.py
 
-all: install lint format test
+test:
+	python -m pytest -vv --cov=code test_code.py
+
+all: install lint test
