@@ -4,6 +4,6 @@
 
 1.	Take a Roman numeral as its input and returns its value as an integer.
   
-3.	Reverses each word in a string
+2.	Reverses each word in a string
    
-5.	Given the time of the day (hours, minutes) return the angle between the hands on a clock.
+3.	Given the time of the day (hours, minutes) return the angle between the hands on a clock.
