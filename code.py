@@ -3,11 +3,14 @@ import re
 
 # Task 1: Convert Roman numeral to integer
 def roman_to_integer(roman_numeral):
+    #initialising the dictionary
     roman_values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 
     result = 0
     prev_value = 0
-
+    
+    # loop trough the caracters in reverse order 
+    # to retrieve the corresponding decimal value from the dictionary
     for char in roman_numeral[::-1]:
         value = roman_values[char]
         if value < prev_value:
@@ -17,7 +20,6 @@ def roman_to_integer(roman_numeral):
             prev_value = value
 
     return result
-
 
 # Task 2: Reverse words in a string
 def reverse_words(string):
