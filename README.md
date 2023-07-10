@@ -46,7 +46,7 @@ Examples
 
 Examples of the use of the code are provided in the [testcode.ipynb](https://github.com/mbonav/roman_reverse_clock/blob/main/testcode.ipynb) notebook.
 
-If you find a bug or want to suggest improvements, please create a [ticket]()
+If you find a bug or want to suggest improvements, please create a [ticket](https://github.com/mbonav/roman_reverse_clock/issues)
 
 
 Author and contributors
